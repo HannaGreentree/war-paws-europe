@@ -1,4 +1,3 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -10,7 +9,7 @@
     />
     <title>War Paws International | Home</title>
 
-    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+    <link rel="stylesheet" href="css/styles.css" />
   </head>
 
   <body>
@@ -18,14 +17,10 @@
     <header class="site-header">
       <div class="header-inner">
         <!-- Logo (left) -->
-        <a
-          class="brand"
-          href="{% url 'home' %}"
-          aria-label="War Paws International home"
-        >
+        <a class="brand" href="index.html" aria-label="War Paws International home">
           <img
             class="brand-mark"
-            src="{% static 'images/logo.png' %}"
+            src="images/logo.png"
             alt="War Paws International logo"
           />
           <span class="brand-name">War Paws International</span>
@@ -34,26 +29,18 @@
         <!-- Navigation (center) -->
         <nav class="main-nav" aria-label="Main navigation">
           <ul class="nav-list">
-            <li><a class="nav-link active" href="{% url 'home' %}">Home</a></li>
-            <li>
-              <a class="nav-link" href="{% url 'documents' %}">Documents</a>
-            </li>
-            <li>
-              <a class="nav-link" href="{% url 'shelters' %}">Shelters</a>
-            </li>
-            <li><a class="nav-link" href="{% url 'blog' %}">Blog</a></li>
-            <li><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
+            <li><a class="nav-link active" href="index.html">Home</a></li>
+            <li><a class="nav-link" href="documents.html">Documents</a></li>
+            <li><a class="nav-link" href="shelters.html">Shelters</a></li>
+            <li><a class="nav-link" href="blog.html">Blog</a></li>
+            <li><a class="nav-link" href="contact.html">Contact</a></li>
           </ul>
         </nav>
 
         <!-- Search (right) -->
         <div class="header-actions">
-          <form
-            class="site-search"
-            action="{% url 'documents' %}"
-            method="get"
-            aria-label="Site search"
-          >
+          <!-- Static site note: this will only navigate; filtering must be done with JS on documents.html -->
+          <form class="site-search" action="documents.html" method="get" aria-label="Site search">
             <label class="sr-only" for="q">Search</label>
             <input id="q" name="q" type="search" placeholder="Search" />
           </form>
@@ -72,43 +59,31 @@
         <div class="hero-grid" id="heroGrid">
           <!-- Base images -->
           <figure class="hero-tile">
-            <img
-              src="{% static 'images/hero-base-1.jpg' %}"
-              alt="Animal in war zone"
-            />
+            <img src="images/hero-base-1.jpg" alt="Animal in war zone" />
           </figure>
           <figure class="hero-tile">
-            <img
-              src="{% static 'images/hero-base-2.jpg' %}"
-              alt="Animal in war zone"
-            />
+            <img src="images/hero-base-2.jpg" alt="Animal in war zone" />
           </figure>
           <figure class="hero-tile">
-            <img
-              src="{% static 'images/hero-base-3.jpg' %}"
-              alt="Animal in war zone"
-            />
+            <img src="images/hero-base-3.jpg" alt="Animal in war zone" />
           </figure>
           <figure class="hero-tile">
-            <img
-              src="{% static 'images/hero-base-4.jpg' %}"
-              alt="Animal in war zone"
-            />
+            <img src="images/hero-base-4.jpg" alt="Animal in war zone" />
           </figure>
 
           <!-- Overlay images -->
           <div class="hero-overlay" aria-hidden="true">
             <figure class="hero-tile">
-              <img src="{% static 'images/hero-war-1.jpg' %}" alt="" />
+              <img src="images/hero-war-1.jpg" alt="" />
             </figure>
             <figure class="hero-tile">
-              <img src="{% static 'images/hero-war-2.jpg' %}" alt="" />
+              <img src="images/hero-war-2.jpg" alt="" />
             </figure>
             <figure class="hero-tile">
-              <img src="{% static 'images/hero-war-3.jpg' %}" alt="" />
+              <img src="images/hero-war-3.jpg" alt="" />
             </figure>
             <figure class="hero-tile">
-              <img src="{% static 'images/hero-war-4.jpg' %}" alt="" />
+              <img src="images/hero-war-4.jpg" alt="" />
             </figure>
           </div>
         </div>
@@ -126,17 +101,15 @@
             </p>
 
             <div class="hero-actions">
-              <a class="btn" href="{% url 'documents' %}">View Documents</a>
-              <a class="btn" href="{% url 'shelters' %}">Find Shelters</a>
-              <a class="btn" href="{% url 'blog' %}">Read Blog</a>
+              <a class="btn" href="documents.html">View Documents</a>
+              <a class="btn" href="shelters.html">Find Shelters</a>
+              <a class="btn" href="blog.html">Read Blog</a>
             </div>
           </div>
 
           <aside class="live-panel" aria-label="Live war day counter">
             <div class="live-label">LIVE</div>
-            <div class="live-number" id="warDayNumber">
-              {{ war_day_number }}
-            </div>
+            <div class="live-number" id="warDayNumber">—</div>
             <div class="live-line">Day of Russian war</div>
             <div class="live-line">against Ukraine</div>
           </aside>
@@ -148,7 +121,7 @@
         <div class="split-inner">
           <div class="split-media">
             <img
-              src="{% static 'images/section-volunteers.jpg' %}"
+              src="images/section-volunteers.jpg"
               alt="Volunteers helping animals"
             />
           </div>
@@ -183,7 +156,7 @@
           </div>
           <div class="split-media">
             <img
-              src="{% static 'images/section-who-for.jpg' %}"
+              src="images/section-who-for.jpg"
               alt="Person with a rescued animal"
             />
           </div>
@@ -225,9 +198,7 @@
               their websites and social media pages so you can verify
               information and contact them directly.
             </p>
-            <a class="link" href="{% url 'documents' %}"
-              >Read more in Documents →</a
-            >
+            <a class="link" href="documents.html">Read more in Documents →</a>
           </div>
         </div>
       </section>
@@ -236,30 +207,18 @@
     <!-- FOOTER -->
     <footer class="site-footer">
       <div class="footer-top">
-        <a
-          class="brand footer-brand"
-          href="{% url 'home' %}"
-          aria-label="War Paws International home"
-        >
-          <img
-            class="brand-mark"
-            src="{% static 'images/logo.png' %}"
-            alt="War Paws International logo"
-          />
+        <a class="brand footer-brand" href="index.html" aria-label="War Paws International home">
+          <img class="brand-mark" src="images/logo.png" alt="War Paws International logo" />
           <span class="brand-name">War Paws International</span>
         </a>
 
         <nav class="footer-nav" aria-label="Footer navigation">
           <ul class="nav-list">
-            <li><a class="nav-link" href="{% url 'home' %}">Home</a></li>
-            <li>
-              <a class="nav-link" href="{% url 'documents' %}">Documents</a>
-            </li>
-            <li>
-              <a class="nav-link" href="{% url 'shelters' %}">Shelters</a>
-            </li>
-            <li><a class="nav-link" href="{% url 'blog' %}">Blog</a></li>
-            <li><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
+            <li><a class="nav-link" href="index.html">Home</a></li>
+            <li><a class="nav-link" href="documents.html">Documents</a></li>
+            <li><a class="nav-link" href="shelters.html">Shelters</a></li>
+            <li><a class="nav-link" href="blog.html">Blog</a></li>
+            <li><a class="nav-link" href="contact.html">Contact</a></li>
           </ul>
         </nav>
       </div>
@@ -270,12 +229,25 @@
           guarantee reliability 100%. Please verify shelters and volunteers
           independently before sending money or sharing personal information.
         </p>
-        <p class="copy">
-          &copy; <span id="year"></span> War Paws International
-        </p>
+        <p class="copy">&copy; <span id="year"></span> War Paws International</p>
       </div>
     </footer>
 
-    <script src="{% static 'js/main.js' %}" defer></script>
+    <script src="js/main.js" defer></script>
+
+    <!-- GitHub Pages-safe dynamic bits -->
+    <script>
+      // Footer year
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      // War day counter (days since 2022-02-24)
+      (function () {
+        const start = new Date("2022-02-24T00:00:00Z");
+        const now = new Date();
+        const days = Math.floor((now - start) / (1000 * 60 * 60 * 24));
+        const el = document.getElementById("warDayNumber");
+        if (el) el.textContent = days.toString();
+      })();
+    </script>
   </body>
 </html>
