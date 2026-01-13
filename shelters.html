@@ -17,16 +17,8 @@
     <header class="site-header">
       <div class="header-inner">
         <!-- Logo (left) -->
-        <a
-          class="brand"
-          href="index.html"
-          aria-label="War Paws International home"
-        >
-          <img
-            src="images/logo.png"
-            alt="War Paws International logo"
-            class="brand-mark"
-          />
+        <a class="brand" href="index.html" aria-label="War Paws International home">
+          <img src="images/logo.png" alt="War Paws International logo" class="brand-mark" />
           <span class="brand-name">War Paws International</span>
         </a>
 
@@ -35,9 +27,7 @@
           <ul class="nav-list">
             <li><a class="nav-link" href="index.html">Home</a></li>
             <li><a class="nav-link" href="documents.html">Documents</a></li>
-            <li>
-              <a class="nav-link active" href="shelters.html">Shelters</a>
-            </li>
+            <li><a class="nav-link active" href="shelters.html">Shelters</a></li>
             <li><a class="nav-link" href="blog.html">Blog</a></li>
             <li><a class="nav-link" href="contact.html">Contact</a></li>
           </ul>
@@ -45,11 +35,8 @@
 
         <!-- Search -->
         <div class="header-actions">
-          <form class="site-search" aria-label="Search shelters">
-            <input
-              type="search"
-              placeholder="Search by city, shelter, volunteer"
-            />
+          <form class="site-search" aria-label="Search shelters" onsubmit="return false;">
+            <input id="shelterSearchTop" type="search" placeholder="Search by city, shelter, volunteer" />
           </form>
         </div>
       </div>
@@ -62,9 +49,8 @@
         <div class="page-inner">
           <h1>Shelters & Volunteers</h1>
           <p>
-            Below is a list of animal shelters and volunteers in Ukraine who
-            help cats and dogs affected by the war. Please check their social
-            media pages and contact them directly.
+            Below is a list of animal shelters and volunteers in Ukraine who help cats and dogs affected by the war.
+            Please check their social media pages and contact them directly.
           </p>
         </div>
       </section>
@@ -72,11 +58,10 @@
       <!-- SEARCH BAR -->
       <section class="search-section">
         <div class="search-inner">
-          <form method="get">
+          <form onsubmit="return false;">
             <input
               type="search"
-              name="q"
-              value="{{ query }}"
+              id="shelterSearch"
               class="shelter-search"
               placeholder="Type a city, shelter name, or keyword"
               aria-label="Search shelters"
@@ -87,46 +72,12 @@
 
       <!-- SHELTERS GRID -->
       <section class="shelters">
-        <div class="shelters-inner">
-          {% for shelter in shelters %}
-          <article class="shelter-card">
-            <h2>{{ shelter.name }}</h2>
+        <div class="shelters-inner" id="sheltersGrid">
+          <!-- Cards injected by JS -->
+        </div>
 
-            {% if shelter.city %}
-            <p class="location">{{ shelter.city }}</p>
-            {% endif %} {% if shelter.description %}
-            <p class="description">{{ shelter.description }}</p>
-            {% endif %}
-
-            <div class="social-links">
-              {% if shelter.instagram_url %}
-              <a
-                href="{{ shelter.instagram_url }}"
-                target="_blank"
-                rel="noopener"
-                >Instagram</a
-              >
-              {% endif %} {% if shelter.facebook_url %}
-              <a
-                href="{{ shelter.facebook_url }}"
-                target="_blank"
-                rel="noopener"
-                >Facebook</a
-              >
-              {% endif %} {% if shelter.tiktok_url %}
-              <a href="{{ shelter.tiktok_url }}" target="_blank" rel="noopener"
-                >TikTok</a
-              >
-              {% endif %} {% if shelter.website_url %}
-              <a href="{{ shelter.website_url }}" target="_blank" rel="noopener"
-                >Website</a
-              >
-              {% endif %}
-            </div>
-          </article>
-          {% empty %}
+        <div class="shelters-inner" id="sheltersEmpty" style="display:none;">
           <p>No shelters found.</p>
-          {% endfor %}
         </div>
       </section>
 
@@ -134,10 +85,8 @@
       <section class="disclaimer-section">
         <div class="disclaimer-inner">
           <p>
-            War Paws International gathers information from public sources and
-            volunteers. We cannot guarantee reliability 100%. Please verify
-            shelters and volunteers independently before sending money or
-            arranging animal transport.
+            War Paws International gathers information from public sources and volunteers. We cannot guarantee reliability
+            100%. Please verify shelters and volunteers independently before sending money or arranging animal transport.
           </p>
         </div>
       </section>
@@ -147,11 +96,7 @@
     <footer class="site-footer">
       <div class="footer-top">
         <a class="brand footer-brand" href="index.html">
-          <img
-            src="images/logo.png"
-            alt="War Paws International logo"
-            class="brand-mark"
-          />
+          <img src="images/logo.png" alt="War Paws International logo" class="brand-mark" />
           <span class="brand-name">War Paws International</span>
         </a>
 
@@ -159,9 +104,7 @@
           <ul class="nav-list">
             <li><a class="nav-link" href="index.html">Home</a></li>
             <li><a class="nav-link" href="documents.html">Documents</a></li>
-            <li>
-              <a class="nav-link active" href="shelters.html">Shelters</a>
-            </li>
+            <li><a class="nav-link active" href="shelters.html">Shelters</a></li>
             <li><a class="nav-link" href="blog.html">Blog</a></li>
             <li><a class="nav-link" href="contact.html">Contact</a></li>
           </ul>
@@ -169,13 +112,117 @@
       </div>
 
       <div class="footer-bottom">
-        <p class="copy">
-          &copy; <span id="year"></span> War Paws International
-        </p>
+        <p class="copy">&copy; <span id="year"></span> War Paws International</p>
       </div>
     </footer>
 
     <script src="js/main.js"></script>
-    <script src="js/shelters.js"></script>
+
+    <!-- Shelters rendering + search (GitHub Pages friendly) -->
+    <script>
+      // Footer year (in case main.js doesn't set it)
+      const yearEl = document.getElementById("year");
+      if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+      // 1) Put your shelter data here OR load from JSON (see note below)
+      const shelters = [
+        // Example:
+        // {
+        //   name: "Example Shelter",
+        //   city: "Kyiv",
+        //   description: "Rescue and rehoming for cats and dogs.",
+        //   instagram_url: "https://instagram.com/...",
+        //   facebook_url: "https://facebook.com/...",
+        //   tiktok_url: "",
+        //   website_url: "https://example.org"
+        // }
+      ];
+
+      const grid = document.getElementById("sheltersGrid");
+      const emptyState = document.getElementById("sheltersEmpty");
+
+      function esc(str) {
+        return String(str ?? "")
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;")
+          .replaceAll("'", "&#039;");
+      }
+
+      function buildLinks(s) {
+        const links = [];
+        if (s.instagram_url) links.push(`<a href="${esc(s.instagram_url)}" target="_blank" rel="noopener">Instagram</a>`);
+        if (s.facebook_url) links.push(`<a href="${esc(s.facebook_url)}" target="_blank" rel="noopener">Facebook</a>`);
+        if (s.tiktok_url) links.push(`<a href="${esc(s.tiktok_url)}" target="_blank" rel="noopener">TikTok</a>`);
+        if (s.website_url) links.push(`<a href="${esc(s.website_url)}" target="_blank" rel="noopener">Website</a>`);
+        return links.join("");
+      }
+
+      function render(list) {
+        if (!grid) return;
+
+        grid.innerHTML = list
+          .map((s) => {
+            return `
+              <article class="shelter-card">
+                <h2>${esc(s.name)}</h2>
+                ${s.city ? `<p class="location">${esc(s.city)}</p>` : ""}
+                ${s.description ? `<p class="description">${esc(s.description)}</p>` : ""}
+                <div class="social-links">
+                  ${buildLinks(s)}
+                </div>
+              </article>
+            `;
+          })
+          .join("");
+
+        const hasItems = list.length > 0;
+        grid.style.display = hasItems ? "" : "none";
+        if (emptyState) emptyState.style.display = hasItems ? "none" : "";
+      }
+
+      function filterShelters(term) {
+        const t = (term || "").trim().toLowerCase();
+        if (!t) return shelters;
+
+        return shelters.filter((s) => {
+          const haystack = `${s.name || ""} ${s.city || ""} ${s.description || ""}`.toLowerCase();
+          return haystack.includes(t);
+        });
+      }
+
+      function syncSearch(term) {
+        const top = document.getElementById("shelterSearchTop");
+        const main = document.getElementById("shelterSearch");
+        if (top && top.value !== term) top.value = term;
+        if (main && main.value !== term) main.value = term;
+      }
+
+      function onSearch(term) {
+        const results = filterShelters(term);
+        render(results);
+      }
+
+      // Hook up both search inputs
+      const topInput = document.getElementById("shelterSearchTop");
+      const mainInput = document.getElementById("shelterSearch");
+      [topInput, mainInput].forEach((inp) => {
+        if (!inp) return;
+        inp.addEventListener("input", (e) => {
+          const term = e.target.value;
+          syncSearch(term);
+          onSearch(term);
+        });
+      });
+
+      // If a query string exists (?q=kyiv), prefill search
+      const params = new URLSearchParams(window.location.search);
+      const q = params.get("q") || "";
+      syncSearch(q);
+
+      // Initial render
+      render(filterShelters(q));
+    </script>
   </body>
 </html>
