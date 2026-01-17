@@ -22,11 +22,20 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   /* HERO WIPE ANIMATION (once per page load) */
-  const heroGrid = document.getElementById("heroGrid");
+     const heroGrid = document.getElementById("heroGrid");
   if (!heroGrid) return;
 
-  const WAIT_BEFORE_START = 2000; // 2 seconds
   setTimeout(() => {
     heroGrid.classList.add("hero-reveal");
-  }, WAIT_BEFORE_START);
+
+    const overlayImgs = heroGrid.querySelectorAll(".hero-overlay img");
+    overlayImgs.forEach((img) => {
+      img.addEventListener("animationend", () => {
+        img.style.webkitMaskImage = "none";
+        img.style.maskImage = "none";
+        img.style.webkitMaskSize = "auto";
+        img.style.maskSize = "auto";
+      });
+    });
+  }, 2000);
 });
