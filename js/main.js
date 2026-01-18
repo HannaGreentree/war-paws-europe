@@ -1,18 +1,25 @@
 document.addEventListener("DOMContentLoaded", () => {
-  /* Footer year */
+  console.log("✅ main.js loaded");
+
+  // Footer year
   const yearEl = document.getElementById("year");
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-  /* War day counter */
+  // War day counter (UTC-safe)
   const warDayEl = document.getElementById("warDayNumber");
   if (warDayEl) {
-    const start = new Date("2022-02-24T00:00:00Z");
+    const warStartUTC = Date.UTC(2022, 1, 24);
     const now = new Date();
-    const days = Math.floor((now - start) / (1000 * 60 * 60 * 24));
+    const todayUTC = Date.UTC(
+      now.getUTCFullYear(),
+      now.getUTCMonth(),
+      now.getUTCDate()
+    );
+    const days = Math.floor((todayUTC - warStartUTC) / (24 * 60 * 60 * 1000));
     warDayEl.textContent = String(days);
   }
 
-  /* Mobile menu toggle */
+  // Mobile menu toggle
   const menuBtn = document.querySelector(".menu-btn");
   const mainNav = document.querySelector(".main-nav");
   if (menuBtn && mainNav) {
@@ -21,8 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  /* HERO WIPE ANIMATION (once per page load) */
-  
+  // ---- HERO VIDEO MASK REVEAL ----
    // ---- HERO VIDEO MASK REVEAL (LUMINANCE MASK for MP4) ----
   const heroGrid = document.getElementById("heroGrid");
   const maskVideo = document.getElementById("dripMaskVideo");
@@ -187,8 +193,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.addEventListener("resize", () => {
     if (!maskVideo.ended) sizeCanvases();
-  
+  });
+
 });
-
-
-
