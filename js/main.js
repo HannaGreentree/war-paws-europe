@@ -18,19 +18,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
  // Mobile menu toggle (improved but still simple)
-// Mobile menu toggle
 const menuBtn = document.querySelector(".menu-btn");
 const mainNav = document.querySelector(".main-nav");
-
-if (menuBtn && mainNav) {
-  menuBtn.addEventListener("click", () => {
-    mainNav.classList.toggle("is-open");
-  });
-}
-
-
-
-
 
 if (menuBtn && mainNav) {
   menuBtn.addEventListener("click", (e) => {
@@ -73,7 +62,7 @@ if (menuBtn && mainNav) {
    
   const overlayTiles = document.querySelectorAll(".hero-overlay-tile");
   if (overlayTiles.length) {
-    const WAIT_BEFORE_START = 300; // 2 seconds
+    const WAIT_BEFORE_START = 400; // 2 seconds
     const STAGGER = 300; // 0.5 seconds between tiles
 
     // Sort by data-order (1,2,3,4)
@@ -130,9 +119,5 @@ if (swaps.length) {
   swaps.forEach((swap) => observer.observe(swap));
 }
 });
-
-
-
-
 
 
