@@ -1,14 +1,10 @@
 /* =========================
    War Paws International
    Home page styles.css
-   ========================= */
-/* TEMP TEST: show menu in red when open */
-.main-nav.is-open {
-  outline: 4px solid red;
-}
+========================= */
 
 /* =========================
-   RESET & BASE
+   RESET & BASE (DESKTOP FIRST)
 ========================= */
 *,
 *::before,
@@ -25,7 +21,7 @@ html {
   color: #111;
 }
 
-/* ✅ Footer responsiveness + stability (no visual design change) */
+/* Footer stability */
 html,
 body {
   height: 100%;
@@ -87,10 +83,12 @@ ul {
 }
 
 /* =========================
-   HEADER
+   HEADER (DESKTOP FIRST)
 ========================= */
 .site-header {
   border-bottom: 1px solid #e5e5e5;
+  position: relative;
+  z-index: 9999;
 }
 
 .header-inner {
@@ -100,16 +98,6 @@ ul {
   gap: 14px;
   padding: 12px 16px;
 }
-
-
-
-@media (max-width: 768px) {
-  .header-inner {
-    gap: 2px; /* ⭐ closer than before */
-  }
-}
-
-
 
 .brand {
   display: flex;
@@ -126,8 +114,6 @@ ul {
   display: none;
   font-weight: 700;
 }
-
-
 
 .nav-list {
   display: flex;
@@ -162,18 +148,7 @@ ul {
   cursor: pointer;
 }
 
-
-
-@media (max-width: 768px) {
-  .menu-btn {
-    font-size: 1.4rem;   /* ⭐ bigger icon */
-    padding: 8px 14px;   /* ⭐ easier to tap */
-  }
-}
-
-
-
-
+/* Mobile menu baseline (hidden unless opened) */
 .main-nav {
   display: none;
 }
@@ -182,57 +157,62 @@ ul {
   display: block;
   position: absolute;
   top: 64px;
-  left: 16px;
-  right: 16px;
+  left: 12px;
+  right: 12px;
   background: #fff;
-  padding: 12px;
   border: 1px solid #e5e5e5;
+  padding: 12px;
   z-index: 9999;
 }
 
+/* Desktop nav on (your existing desktop behavior) */
+@media (min-width: 1024px) {
+  .main-nav {
+    display: flex;
+    position: static;
+    border: 0;
+    padding: 0;
+    background: transparent;
+  }
 
-.site-header {
-  position: relative;
+  .menu-btn {
+    display: none;
+  }
+
+  .header-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
 }
 
-
 /* =========================
-   HERO IMAGES (base + overlay)
+   HERO IMAGES (DESKTOP FIRST)
 ========================= */
-/* ===== HERO FIX (desktop + mobile) ===== */
+.hero {
+  overflow: hidden;
+}
 
-/* base */
-.hero { overflow: hidden; }
-.hero-grid{
+.hero-grid {
   position: relative;
   display: grid;
   grid-template-columns: 1fr;
   gap: 4px;
 }
-.hero-tile{
+
+.hero-tile {
   position: relative;
   height: 260px;
   overflow: hidden;
 }
 
-
-/* MOBILE ONLY: make hero same height as desktop */
-@media (max-width: 768px) {
-  .hero-tile {
-    height: 300px;
-  }
-}
-
-
-.hero-tile img{
+.hero-tile img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
 }
 
-/* overlay */
-.hero-overlay{
+.hero-overlay {
   position: absolute;
   inset: 0;
   display: grid;
@@ -241,51 +221,36 @@ ul {
   pointer-events: none;
   z-index: 5;
 }
-.hero-overlay-tile{
+
+.hero-overlay-tile {
   opacity: 0;
   transform: translateY(-105%);
   transition: transform 5s ease, opacity 0.8s ease;
   will-change: transform;
 }
-.hero-overlay-tile.is-revealed{
+
+.hero-overlay-tile.is-revealed {
   opacity: 1;
   transform: translateY(0);
 }
 
-/* desktop unchanged: 4 in a row */
-@media (min-width: 1024px){
-  .hero-grid{ grid-template-columns: repeat(4, 1fr); }
-  .hero-overlay{ grid-template-columns: repeat(4, 1fr); }
-  .hero-tile{ height: 420px; }
-}
-
-/* mobile only: 2x2 + slide from sides toward center */
-@media (max-width: 768px){
-  .hero-grid{ grid-template-columns: repeat(2, 1fr); }
-  .hero-overlay{ grid-template-columns: repeat(2, 1fr); }
-
-  .hero-overlay .hero-overlay-tile:nth-child(odd){
-    transform: translateX(-110%);
-    opacity: 0;
-  }
-  .hero-overlay .hero-overlay-tile:nth-child(even){
-    transform: translateX(110%);
-    opacity: 0;
+/* Desktop: 4 in a row + 420px height */
+@media (min-width: 1024px) {
+  .hero-grid {
+    grid-template-columns: repeat(4, 1fr);
   }
 
-  /* override reveal to X on mobile */
-  .hero-overlay .hero-overlay-tile.is-revealed{
-    transform: translateX(0);
-    opacity: 1;
+  .hero-overlay {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .hero-tile {
+    height: 420px;
   }
 }
-
-
-
-
 
 /* =========================
-   HERO CONTENT
+   HERO CONTENT (DESKTOP FIRST)
 ========================= */
 .hero-content {
   padding: 40px 16px 24px;
@@ -295,7 +260,7 @@ ul {
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 18px;
-  align-items: start; /* aligns live panel top with H1 */
+  align-items: start;
 }
 
 .hero-copy h1 {
@@ -316,7 +281,6 @@ ul {
   flex-wrap: wrap;
 }
 
-/* Hover (desktop) + Tap (mobile) */
 .hero-actions a:hover,
 .hero-actions a:active,
 .hero-actions button:hover,
@@ -325,24 +289,20 @@ ul {
   color: #fff;
 }
 
-/* =========================
-   LIVE PANEL
-========================= */
-@media (max-width: 768px) {
+/* Desktop: max-width constraints you had */
+@media (min-width: 1024px) {
   .hero-content-inner {
-    grid-template-columns: 1fr;
-  }
-
-  .live-panel {
-    order: -1;
-    justify-self: center;
-  }
-
-  .hero-copy {
-    order: 2;
+    max-width: 1100px;
+    margin: 0 auto;
+    grid-template-columns: 1fr 320px;
+    align-items: start;
+    gap: 32px;
   }
 }
 
+/* =========================
+   LIVE PANEL (DESKTOP FIRST)
+========================= */
 .live-panel {
   max-width: 320px;
   text-align: center;
@@ -351,7 +311,6 @@ ul {
   margin-top: 7px;
 }
 
-/* ✅ cleaned invalid/duplicate rules (no visual change) */
 .live-label {
   background: #00B4D8;
   color: #fff;
@@ -385,7 +344,7 @@ ul {
 }
 
 /* =========================
-   SECTIONS
+   SECTIONS (DESKTOP FIRST)
 ========================= */
 .story-image img {
   width: 100%;
@@ -400,13 +359,10 @@ ul {
   margin: 0 auto;
   padding: 40px 16px 24px;
   box-sizing: border-box;
-
   font-size: 1.05rem;
   line-height: 1.8;
   text-align: left;
 }
-
-
 
 .story-text h1 {
   font-size: 2rem;
@@ -422,9 +378,6 @@ ul {
   line-height: 1.5;
 }
 
-
-
-
 /* STORY IMAGE SWAP: base + overlay */
 .story-swap {
   position: relative;
@@ -434,26 +387,23 @@ ul {
 .story-swap .story-base,
 .story-swap .story-overlay {
   width: 100%;
-  height: 60vh;        /* keeps your exact layout */
+  height: 60vh;
   object-fit: cover;
   display: block;
 }
 
-/* Overlay starts hidden off-screen to the left */
 .story-swap .story-overlay {
   position: absolute;
   inset: 0;
   transform: translateX(-100%);
   will-change: transform;
-  transition: transform 5s cubic-bezier(0.22, 0.61, 0.36, 1); /* 5s, smooth */
+  transition: transform 5s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
-/* When revealed, it slides fully into place */
 .story-swap .story-overlay.is-revealed {
   transform: translateX(0);
 }
 
-/* Accessibility: respect reduced motion */
 @media (prefers-reduced-motion: reduce) {
   .story-swap .story-overlay {
     transition: none;
@@ -461,22 +411,14 @@ ul {
   }
 }
 
-
-
-
-
-
-.important-notice
-.disclaimer {
-  font-size: 20px;     /* bigger text */
-  line-height: 1.6;       /* easier to read */
-  color: #00B4D8;        /* soft, serious color */
-  text-align: center;     /* looks intentional */
+/* important notice (your selector kept the same meaning) */
+.important-notice .disclaimer {
+  font-size: 20px;
+  line-height: 1.6;
+  color: #00B4D8;
+  text-align: center;
   margin-bottom: 12px;
 }
-
-
-
 
 .split-inner {
   display: block;
@@ -497,6 +439,9 @@ ul {
   margin-bottom: 10px;
 }
 
+/* =========================
+   HERO STATS (DESKTOP FIRST)
+========================= */
 .hero-stats {
   padding: 24px 16px;
 }
@@ -504,11 +449,9 @@ ul {
 .hero-stats-inner {
   max-width: 1100px;
   margin: 0 auto;
-
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 24px;
-
   align-items: stretch;
 }
 
@@ -522,31 +465,16 @@ ul {
   display: flex;
   flex-direction: column;
   justify-content: center;
-
-  transition: transform 0.2s ease;   /* ⭐ smooth animation */
+  transition: transform 0.2s ease;
 }
 
-/* Desktop hover */
 .hero-stat:hover {
-  transform: scale(1.10);            /* ⭐ slightly larger */
+  transform: scale(1.10);
 }
 
-/* Mobile tap */
 .hero-stat:active {
-  transform: scale(1.04);            /* ⭐ same effect on touch */
+  transform: scale(1.04);
 }
-
-
-
-/* MOBILE ONLY: hero stats 2x2 grid */
-@media (max-width: 768px) {
-  .hero-stats-inner {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-
-
 
 .stat-number {
   font-size: 4rem;
@@ -561,6 +489,9 @@ ul {
   margin: 0;
 }
 
+/* =========================
+   FAQ (DESKTOP FIRST)
+========================= */
 .qa-inner-h2 {
   text-align: center;
   font-size: 2rem;
@@ -588,46 +519,43 @@ ul {
   font-weight: 700;
 }
 
-
-/* Center important notice text */
 .important-notice {
   display: flex;
-  justify-content: center;   /* centers horizontally */
+  justify-content: center;
   padding: 16px;
 }
 
 .important-notice .disclaimer {
-  text-align: center;        /* centers text itself */
-  max-width: 900px;          /* keeps it readable on large screens */
+  text-align: center;
+  max-width: 900px;
   line-height: 1.5;
 }
 
-
+/* Desktop max-width blocks you had */
+@media (min-width: 1024px) {
+  .qa-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+}
 
 /* =========================
-   FOOTER (menu + logo + search)
+   FOOTER (DESKTOP FIRST)
 ========================= */
-/* =========================
-   FOOTER – FINAL LAYOUT
-========================= */
-
 .site-footer {
   border-top: 1px solid #ddd;
   margin-top: 40px;
 }
 
-/* TOP FOOTER ROW */
 .footer-inner {
   max-width: 1100px;
   margin: 0 auto;
   padding: 24px 16px;
-
   display: grid;
-  grid-template-columns: auto 1fr auto; /* logo | search | menu */
+  grid-template-columns: auto 1fr auto;
   align-items: center;
 }
 
-/* LOGO — LEFT */
 .footer-brand {
   display: flex;
   align-items: center;
@@ -642,7 +570,6 @@ ul {
   font-weight: 700;
 }
 
-/* SEARCH — CENTER */
 .footer-search {
   display: flex;
   justify-content: center;
@@ -655,31 +582,17 @@ ul {
   border: 1px solid #ccc;
 }
 
-
-
-
-@media (max-width: 768px) {
-  .footer-brand {
-    justify-content: center; /* ⭐ centers logo */
-  }
-}
-
-
-
-
 .footer-nav-list {
   display: grid;
-  grid-template-columns: repeat(2, auto); /* ⭐ TWO COLUMNS */
-  gap: 10px 32px;                          /* row gap | column gap */
-  justify-content: center;                /* ⭐ center the menu */
+  grid-template-columns: repeat(2, auto);
+  gap: 10px 32px;
+  justify-content: center;
 }
-
 
 .footer-nav-link {
   padding: 4px 0;
 }
 
-/* BOTTOM FOOTER — CENTERED */
 .footer-bottom {
   max-width: 1100px;
   margin: 0 auto;
@@ -699,14 +612,97 @@ ul {
   color: #999;
 }
 
-/* =========================
-   MOBILE (STACKED)
-========================= */
+/* =========================================================
+   MOBILE ONLY (ALL MOBILE RULES HERE)
+   max-width: 768px / 1023px rules grouped
+========================================================= */
+
+/* Header tighter + bigger burger */
+@media (max-width: 768px) {
+  .header-inner {
+    gap: 2px;
+  }
+
+  .menu-btn {
+    font-size: 2.4rem;
+    padding: 8px 14px;
+  }
+}
+
+/* Mobile menu list vertical */
+@media (max-width: 1023px) {
+  .main-nav.is-open .nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    align-items: flex-start;
+  }
+}
+
+/* Hero: 2x2 grid + 300px height on mobile */
+@media (max-width: 768px) {
+  .hero-tile {
+    height: 300px;
+  }
+
+  .hero-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero-overlay {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* mobile slide from sides toward center */
+  .hero-overlay .hero-overlay-tile:nth-child(odd) {
+    transform: translateX(-110%);
+    opacity: 0;
+  }
+
+  .hero-overlay .hero-overlay-tile:nth-child(even) {
+    transform: translateX(110%);
+    opacity: 0;
+  }
+
+  .hero-overlay .hero-overlay-tile.is-revealed {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Hero content: stack + live panel first */
+@media (max-width: 768px) {
+  .hero-content-inner {
+    grid-template-columns: 1fr;
+  }
+
+  .live-panel {
+    order: -1;
+    justify-self: center;
+  }
+
+  .hero-copy {
+    order: 2;
+  }
+}
+
+/* Hero stats: 2 per row */
+@media (max-width: 768px) {
+  .hero-stats-inner {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Footer stack */
 @media (max-width: 768px) {
   .footer-inner {
     grid-template-columns: 1fr;
     gap: 20px;
     text-align: center;
+  }
+
+  .footer-brand {
+    justify-content: center;
   }
 
   .footer-nav-list {
@@ -718,64 +714,6 @@ ul {
   }
 }
 
-
-
-
-/* =========================
-   MOBILE VERSION
-========================= */
-@media (min-width: 1024px) {
-  .main-nav {
-    display: flex;
-  }
-
-  .menu-btn {
-    display: none;
-  }
-
-  .header-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
-  .hero-grid {
-    grid-template-columns: repeat(4, 1fr);
-  }
-
-  .hero-overlay {
-    grid-template-columns: repeat(4, 1fr);
-  }
-
-  .hero-tile {
-    height: 420px;
-  }
-
-  .hero-content-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    grid-template-columns: 1fr 320px;
-    align-items: start;
-    gap: 32px;
-  }
-
-  .split-inner,
-  .qa-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
-  .split-inner {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 28px;
-    align-items: center;
-  }
-
-  .split-media img {
-    margin-bottom: 0;
-    height: 320px;
-  }
-}
 
 
 
