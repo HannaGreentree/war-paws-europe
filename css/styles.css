@@ -189,6 +189,8 @@ ul {
 /* =========================
    HERO IMAGES (DESKTOP FIRST)
 ========================= */
+
+
 .hero {
   overflow: hidden;
 }
@@ -637,13 +639,83 @@ ul {
     flex-direction: column;
     gap: 22px;
     align-items: flex-start;
+    
+    
+  }
+
+.main-nav.is-open {
+  padding: 18px 30px;
+  top: 68px;
+  width: 40%;
+}
+
+.nav-link {
+  padding: 6px 56px;
+}
+
+
+}
+
+
+
+
+
+
+
+/* ===== MOBILE MENU: reduce vertical space ===== */
+@media (max-width: 1023px) {
+ 
+
+  .main-nav.is-open .nav-list {
+    gap: 12px;             /* tighter spacing between items */
+  }
+
+  .nav-link {
+    padding: 4px 2px;      /* reduce clickable padding */
+    line-height: 1.2;
   }
 }
+
+
+
+
+
+
+
+
+
+
+/* ===== MOBILE BURGER: logo-matching frame + thicker 3 lines ===== */
+@media (max-width: 1023px) {
+  /* Set this to the exact logo color (update if needed) */
+  :root {
+    --brand: #00B4D8;
+  }
+
+  .menu-btn {
+    width: 56px;
+    height: 56px;
+    border: 2px solid var(--brand);
+    border-radius: 12px;          /* tweak if your logo corners are more/less round */
+    background: #fff;
+    display: grid;
+    place-items: center;
+    padding: 1px;
+    color: rgb(75, 75, 71);
+  }
+
+  
+
+
+
+
+
+
 
 /* Hero: 2x2 grid + 300px height on mobile */
 @media (max-width: 768px) {
   .hero-tile {
-    height: 300px;
+    height: 330px;
   }
 
   .hero-grid {
@@ -651,14 +723,9 @@ ul {
   }
 
 
-  @media (max-width: 768px) {
-  .hero,
-  .hero-grid {
-    overflow: hidden;
-  }
-}
 
-   
+
+
   .hero-overlay {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -703,6 +770,29 @@ ul {
   }
 }
 
+
+/* === MOBILE FIX: story images should NOT crop === */
+@media (max-width: 768px) {
+  .story-swap img,
+  .story-image img {
+    object-fit: contain !important;
+    background: #fff !important; /* no black bars */
+  }
+}
+
+
+
+@media (max-width: 768px) {
+  .story-swap .story-base,
+  .story-swap .story-overlay,
+  .story-image img {
+    height: 42vh;   /* adjust if needed */
+    object-fit: cover;
+  }
+}
+
+
+
 /* Footer stack */
 @media (max-width: 768px) {
   .footer-inner {
@@ -723,6 +813,7 @@ ul {
     justify-content: center;
   }
 }
+
 
 
 
