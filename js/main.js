@@ -94,9 +94,3 @@ document.addEventListener("DOMContentLoaded", () => {
     swaps.forEach((swap) => observer.observe(swap));
   }
 });
-
-
-
-
-
-
