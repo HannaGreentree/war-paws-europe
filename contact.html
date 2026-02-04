@@ -1,15 +1,22 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="War Paws International - contact us for adoption enquiries or to add a shelter/volunteer to our list."
+      content="War Paws Europe (WPE) - adoption guidance and resources for helping animals affected by the war in Ukraine."
     />
-    <title>War Paws International | Contact</title>
+    <title>War Paws Europe | Contact</title>
 
-    <link rel="stylesheet" href="css/styles.css" />
+    <!-- Global site styles -->
+    <link rel="stylesheet" href="css/styles.css?v=10" />
+
+    <!-- If your cards are styled here, keep it -->
+    <link rel="stylesheet" href="css/documents.css?v=10" />
+
+    <!-- If you still use some shared section styles here, keep it -->
+    <link rel="stylesheet" href="css/volunteers.css?v=10" />
   </head>
 
   <body>
@@ -17,13 +24,17 @@
     <header class="site-header">
       <div class="header-inner">
         <!-- Logo (left) -->
-        <a class="brand" href="index.html" aria-label="War Paws International home">
-          <img class="brand-mark" src="images/logo.png" alt="War Paws International logo" />
-          <span class="brand-name">War Paws International</span>
+        <a class="brand" href="index.html" aria-label="War Paws Europe home">
+          <img
+            class="brand-mark"
+            src="images/logo.png"
+            alt="War Paws Europe logo"
+          />
+          <span class="brand-name">War Paws Europe</span>
         </a>
 
         <!-- Navigation (center) -->
-        <nav class="main-nav" aria-label="Main navigation">
+        <nav class="main-nav" id="mainNav" aria-label="Main navigation">
           <ul class="nav-list">
             <li><a class="nav-link" href="index.html">Home</a></li>
             <li><a class="nav-link" href="documents.html">Documents</a></li>
@@ -33,260 +44,291 @@
           </ul>
         </nav>
 
-        <!-- Search (right) -->
+        <!-- Right side -->
         <div class="header-actions">
-          <form class="site-search" action="documents.html" method="get" aria-label="Site search">
-            <label class="sr-only" for="q">Search</label>
-            <input id="q" name="q" type="search" placeholder="Search" />
-          </form>
-
-          <button class="menu-btn" type="button" aria-label="Open menu">☰</button>
+          <button
+            class="menu-btn"
+            type="button"
+            aria-label="Open menu"
+            aria-expanded="false"
+            aria-controls="mainNav"
+          >
+            ☰
+          </button>
         </div>
       </div>
     </header>
 
-    <!-- MAIN -->
     <main>
-      <!-- PAGE INTRO -->
-      <section class="page-header">
-        <div class="page-inner">
-          <h1>Contact</h1>
-          <p>
-            Choose one option below:
-            <strong>Adopt an animal</strong> or
-            <strong>Add a shelter/volunteer</strong>
-            that is not yet listed on our website.
-          </p>
+      <!-- HERO IMAGE SWAP -->
+      <section
+        class="full-bleed hero-swap"
+        aria-label="Contact hero image swap"
+      >
+        <div class="story-image story-swap">
+          <img
+            class="story-base"
+            src="images/dog-on-bed.jpg"
+            alt="Rescue and adoption support for animals affected by war"
+          />
+          <img
+            class="story-overlay"
+            src="images/dog-inside.jpg"
+            alt=""
+            aria-hidden="true"
+          />
         </div>
       </section>
 
-      <!-- OPTION PICKER -->
-      <section class="docs-block">
-        <div class="docs-inner">
-          <h2>What do you need?</h2>
-
-          <form class="contact-choice" aria-label="Choose contact reason" onsubmit="return false;">
-            <fieldset>
-              <legend class="sr-only">Choose contact reason</legend>
-
-              <label>
-                <input type="radio" name="contact_type" value="adopt" checked />
-                I want to adopt a cat or dog from Ukraine
-              </label>
-
-              <label style="display: block; margin-top: 0.75rem">
-                <input type="radio" name="contact_type" value="add-shelter" />
-                I represent a shelter/volunteer and want to be added to the list
-              </label>
-            </fieldset>
-          </form>
-
-          <p style="margin-top: 1rem">
-            We do not take payments and we do not transport animals ourselves.
-            We share links and guidance and encourage independent verification.
-          </p>
-        </div>
+      <!-- PAGE TITLE -->
+      <section class="story-text" aria-label="Contact title">
+        <h2 class="labs-title">CONTACT WAR PAWS EUROPE</h2>
       </section>
 
-      <!-- FORM 1: ADOPTION -->
-      <section class="docs-block" id="form-adopt" aria-label="Adoption enquiry form">
-        <div class="docs-inner">
-          <h2>Form 1: Adoption enquiry</h2>
-          <p>
-            Use this form if you want to adopt. Share your country, preferred
-            animal, and whether you can collect the animal or need transport help.
-          </p>
+      <!-- INTRO TEXT -->
+      <section class="contact-intro" aria-label="Contact introduction">
+        <p>
+          If you are a volunteer, shelter, or a person hoping to adopt an animal
+          from Ukraine who is experiencing difficulties adopting a specific
+          animal, or if you suspect a shelter or individual may be involved in
+          fraudulent activity, please choose the contact form that best fits
+          your situation.
+        </p>
 
-          <!-- Formspree action (replace YOUR_FORMSPREE_ID) -->
-          <form
-            method="post"
-            action="https://formspree.io/f/YOUR_FORMSPREE_ID"
-            class="contact-form"
+        <p>
+          Fill in the form with as much detail as possible, and we will do our
+          best to get back to you as soon as we can.
+        </p>
+
+        <p class="notice">
+          <strong>Please note:</strong> we do not accept any payments and we do
+          not have animals for adoption ourselves. We are animal lovers who
+          gathered information in one place to make adoption from war zones such
+          as Ukraine easier, safer, and more transparent.
+        </p>
+      </section>
+
+      <!-- FORM SWITCH -->
+      <section class="contact-forms" aria-label="Contact forms">
+        <div
+          class="form-switch"
+          role="tablist"
+          aria-label="Choose contact form"
+        >
+          <button
+            class="switch-btn active"
+            type="button"
+            data-target="volunteer-form"
+            role="tab"
+            aria-selected="true"
+            aria-controls="volunteer-form"
           >
-            <input type="hidden" name="form_type" value="adopt" />
+            I am a Volunteer / Shelter
+          </button>
 
-            <div class="form-row">
-              <label for="adopt_name">Full name</label>
-              <input id="adopt_name" name="name" type="text" autocomplete="name" required />
-            </div>
-
-            <div class="form-row">
-              <label for="adopt_email">Email</label>
-              <input id="adopt_email" name="email" type="email" autocomplete="email" required />
-            </div>
-
-            <div class="form-row">
-              <label for="adopt_country">Country / City</label>
-              <input
-                id="adopt_country"
-                name="location"
-                type="text"
-                placeholder="e.g. UK, London"
-                required
-              />
-            </div>
-
-            <div class="form-row">
-              <label for="adopt_animal">Animal you want to adopt</label>
-              <select id="adopt_animal" name="animal_type" required>
-                <option value="" selected disabled>Select one</option>
-                <option value="dog">Dog</option>
-                <option value="cat">Cat</option>
-                <option value="either">Either</option>
-              </select>
-            </div>
-
-            <div class="form-row">
-              <label for="adopt_notes">Message</label>
-              <textarea
-                id="adopt_notes"
-                name="message"
-                rows="6"
-                placeholder="Tell us what you are looking for, your experience, and your travel/transport options."
-                required
-              ></textarea>
-            </div>
-
-            <button class="btn" type="submit">Send adoption enquiry</button>
-          </form>
-        </div>
-      </section>
-
-      <!-- FORM 2: ADD SHELTER/VOLUNTEER -->
-      <section class="docs-block" id="form-add-shelter" aria-label="Add shelter or volunteer form">
-        <div class="docs-inner">
-          <h2>Form 2: Add a shelter / volunteer</h2>
-          <p>
-            Use this form if you represent a shelter/volunteer and want to be included.
-            Please provide links so visitors can verify your work independently.
-          </p>
-
-          <!-- Formspree action (replace YOUR_FORMSPREE_ID) -->
-          <form
-            method="post"
-            action="https://formspree.io/f/YOUR_FORMSPREE_ID"
-            class="contact-form"
+          <button
+            class="switch-btn"
+            type="button"
+            data-target="adopt-form"
+            role="tab"
+            aria-selected="false"
+            aria-controls="adopt-form"
           >
-            <input type="hidden" name="form_type" value="add_shelter" />
-
-            <div class="form-row">
-              <label for="org_name">Shelter / volunteer name</label>
-              <input id="org_name" name="org_name" type="text" required />
-            </div>
-
-            <div class="form-row">
-              <label for="org_city">City / Region (Ukraine)</label>
-              <input id="org_city" name="city" type="text" placeholder="e.g. Lviv, Kherson" required />
-            </div>
-
-            <div class="form-row">
-              <label for="contact_person">Contact person (optional)</label>
-              <input id="contact_person" name="contact_person" type="text" />
-            </div>
-
-            <div class="form-row">
-              <label for="org_email">Email</label>
-              <input id="org_email" name="email" type="email" required />
-            </div>
-
-            <div class="form-row">
-              <label for="org_instagram">Instagram link (recommended)</label>
-              <input id="org_instagram" name="instagram_url" type="url" placeholder="https://instagram.com/..." />
-            </div>
-
-            <div class="form-row">
-              <label for="org_facebook">Facebook link (optional)</label>
-              <input id="org_facebook" name="facebook_url" type="url" placeholder="https://facebook.com/..." />
-            </div>
-
-            <div class="form-row">
-              <label for="org_website">Website link (optional)</label>
-              <input id="org_website" name="website_url" type="url" placeholder="https://..." />
-            </div>
-
-            <div class="form-row">
-              <label for="org_about">Short description</label>
-              <textarea
-                id="org_about"
-                name="description"
-                rows="6"
-                placeholder="Tell us what you do, what animals you help, and how people can verify your work."
-                required
-              ></textarea>
-            </div>
-
-            <button class="btn" type="submit">Request to be added</button>
-          </form>
+            I want to Adopt
+          </button>
         </div>
-      </section>
 
-      <!-- DISCLAIMER -->
-      <section class="docs-highlight">
-        <div class="docs-inner">
-          <h2>Safety note</h2>
-          <p>
-            War Paws International provides links and guidance. We cannot
-            guarantee reliability 100%. Please verify shelters and volunteers
-            independently before sending money or sharing personal information.
-          </p>
-        </div>
+        <!-- VOLUNTEER / SHELTER FORM -->
+        <form
+          id="volunteer-form"
+          class="contact-form"
+          aria-label="Volunteer or shelter form"
+        >
+          <h2>Volunteer / Shelter Form</h2>
+
+          <label>
+            Your full name *
+            <input type="text" name="vs_full_name" required />
+          </label>
+
+          <label>
+            Shelter or volunteer group name *
+            <input type="text" name="vs_group_name" required />
+          </label>
+
+          <label>
+            How many animals are you currently taking care of? *
+            <input type="number" name="vs_animal_count" min="1" required />
+          </label>
+
+          <label>
+            Link to your social media account(s) *
+            <input
+              type="url"
+              name="vs_social"
+              placeholder="https://instagram.com/..."
+              required
+            />
+          </label>
+
+          <label>
+            Can you assist adopters from abroad? *
+            <select name="vs_assist_abroad" required>
+              <option value="">Please select</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+              <option value="sometimes">Sometimes</option>
+            </select>
+          </label>
+
+          <label>
+            Do you regularly provide receipts on your social accounts? *
+            <select name="vs_receipts" required>
+              <option value="">Please select</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+              <option value="sometimes">Sometimes</option>
+            </select>
+          </label>
+
+          <label>
+            Your phone number *
+            <input type="tel" name="vs_phone" required />
+          </label>
+
+          <label>
+            Your email address *
+            <input type="email" name="vs_email" required />
+          </label>
+
+          <label>
+            Your message to us *
+            <textarea name="vs_message" rows="6" required></textarea>
+          </label>
+
+          <button type="submit">Send message</button>
+        </form>
+
+        <!-- ADOPTER FORM -->
+        <form
+          id="adopt-form"
+          class="contact-form hidden"
+          aria-label="Adoption support form"
+        >
+          <h2>Adoption Support Form</h2>
+
+          <label>
+            Your full name *
+            <input type="text" name="ad_full_name" required />
+          </label>
+
+          <label>
+            Your country *
+            <input type="text" name="ad_country" required />
+          </label>
+
+          <label>
+            Your phone number *
+            <input type="tel" name="ad_phone" required />
+          </label>
+
+          <label>
+            Your email address *
+            <input type="email" name="ad_email" required />
+          </label>
+
+          <label>
+            Name of the shelter or volunteer you refer to *
+            <input type="text" name="ad_reference" required />
+          </label>
+
+          <label>
+            Have you tried to resolve the issue directly? *
+            <select name="ad_tried_resolve" required>
+              <option value="">Please select</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+              <option value="partly">Partly</option>
+            </select>
+          </label>
+
+          <label>
+            Your message to us *
+            <textarea name="ad_message" rows="6" required></textarea>
+          </label>
+
+          <button type="submit">Send message</button>
+        </form>
       </section>
     </main>
 
     <!-- FOOTER -->
     <footer class="site-footer">
-      <div class="footer-top">
-        <a class="brand footer-brand" href="index.html" aria-label="War Paws International home">
-          <img class="brand-mark" src="images/logo.png" alt="War Paws International logo" />
-          <span class="brand-name">War Paws International</span>
+      <div class="footer-inner">
+        <a class="footer-brand" href="index.html">
+          <img
+            class="footer-brand-mark"
+            src="images/logo.png"
+            alt="War Paws Europe logo"
+          />
         </a>
 
         <nav class="footer-nav" aria-label="Footer navigation">
-          <ul class="nav-list">
-            <li><a class="nav-link" href="index.html">Home</a></li>
-            <li><a class="nav-link" href="documents.html">Documents</a></li>
-            <li><a class="nav-link" href="shelters.html">Shelters</a></li>
-            <li><a class="nav-link" href="blog.html">Blog</a></li>
-            <li><a class="nav-link active" href="contact.html">Contact</a></li>
+          <ul class="footer-nav-list">
+            <li><a class="footer-nav-link" href="index.html">Home</a></li>
+            <li>
+              <a class="footer-nav-link" href="documents.html">Documents</a>
+            </li>
+            <li><a class="footer-nav-link" href="blog.html">Blog</a></li>
+            <li>
+              <a class="footer-nav-link" href="shelters.html">Shelters</a>
+            </li>
+            <li>
+              <a class="footer-nav-link active" href="contact.html">Contact</a>
+            </li>
           </ul>
         </nav>
+
+        <form class="footer-search">
+          <input
+            type="search"
+            placeholder="Search"
+            aria-label="Search this page"
+          />
+        </form>
       </div>
 
       <div class="footer-bottom">
-        <p class="copy">&copy; <span id="year"></span> War Paws International</p>
+        <p class="copy">&copy; <span id="year"></span> War Paws Europe</p>
       </div>
     </footer>
 
-    <!-- JS -->
-    <script src="js/main.js" defer></script>
+    <script src="js/main.js?v=10" defer></script>
 
-    <!-- Toggle forms -->
+    <!-- Form switch (kept tiny; doesn't affect your design) -->
     <script>
       document.addEventListener("DOMContentLoaded", function () {
-        const adopt = document.getElementById("form-adopt");
-        const addShelter = document.getElementById("form-add-shelter");
-        const radios = document.querySelectorAll('input[name="contact_type"]');
+        const buttons = document.querySelectorAll(".switch-btn");
+        const forms = document.querySelectorAll(".contact-form");
 
-        // Footer year fallback (if main.js doesn't do it)
-        const y = document.getElementById("year");
-        if (y) y.textContent = new Date().getFullYear();
+        buttons.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            buttons.forEach((b) => {
+              b.classList.remove("active");
+              b.setAttribute("aria-selected", "false");
+            });
 
-        function update() {
-          const selected = document.querySelector('input[name="contact_type"]:checked')?.value;
-          if (selected === "add-shelter") {
-            adopt.style.display = "none";
-            addShelter.style.display = "block";
-          } else {
-            adopt.style.display = "block";
-            addShelter.style.display = "none";
-          }
-        }
+            forms.forEach((f) => f.classList.add("hidden"));
 
-        radios.forEach((r) => r.addEventListener("change", update));
-        update();
+            btn.classList.add("active");
+            btn.setAttribute("aria-selected", "true");
+
+            const targetId = btn.getAttribute("data-target");
+            const targetForm = document.getElementById(targetId);
+            if (targetForm) targetForm.classList.remove("hidden");
+          });
+        });
       });
     </script>
   </body>
 </html>
-
-
