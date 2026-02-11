@@ -73,9 +73,6 @@ The purpose of WPE is immediately evident to new users: it provides **adoption g
 ### Domain dataset
 The main managed dataset is **Blog posts** (records created by authorised users and shared with the community).
 
-### Example Schema (describe your real schema here)
-> Update field names to match your project exactly.
-
 #### `Post`
 - `id` (PK)
 - `title` (text)
@@ -180,10 +177,10 @@ W3C CSS Validator: https://jigsaw.w3.org/css-validator/
 - Browser DevTools Console (manual checks)
 
 ### Django / Python Testing
-Recommended evidence:
+"Recommended evidence:
 ```bash
 python manage.py check
-python manage.py test
+python manage.py test"
 
 ### Manual Test Plan (document results) 
 Create a TESTING.md (recommended) and include:
