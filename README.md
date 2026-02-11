@@ -3,6 +3,8 @@
 War Paws Europe (WPE) is a volunteer-led full-stack platform that supports animals affected by the war in Ukraine by centralising adoption guidance, shelter/rescue contacts, and practical resources. The site also includes a **community-managed Blog dataset** where authorised volunteers/admins can publish updates that are immediately visible to the public.
 
 **Live site (Render):** https://war-paws-europe-django.onrender.com
+**Live site on Github (without Python):** 
+**Live site on Github (with Python):**
 
 ---
 
@@ -18,7 +20,7 @@ The site owner advances their goal of improving adoption clarity and reducing ri
 
 ## Project Purpose and Rationale 
 
-The purpose of WPE is immediately evident to new users: it provides **adoption guidance, resource lists, and safety reminders** to reduce confusion, improve safety, and help animals in crisis. The platform addresses multiple related audiences (adopters, Ukrainians fleeing with pets, shelters/rescues, animal protection organisations) by offering clear navigation and actionable information.
+The purpose of WPE is immediately evident to new users: it provides **adoption guidance, resource lists, and safety reminders** to reduce confusion, improve safety, and help animals in crisis. The platform addresses multiple related audiences (adopters, Ukrainians fleeing with pets, shelters/rescues, animal protection organisations) by offering clear navigation and actionable information. This project is a reminder that war has not ended and animals require urgent help. 
 
 ---
 
@@ -54,7 +56,7 @@ The purpose of WPE is immediately evident to new users: it provides **adoption g
 - Django templates and routing
 - Blog dataset stored in a relational database
 - Authenticated management of Blog records:
-  - authorised users (admin/volunteer) can **Create / Read / Update / Delete** posts
+   authorised users (admin/volunteer) can **Create / Read / Update / Delete** posts
 - Django Admin support for managing content (where enabled)
 
 ---
@@ -63,8 +65,8 @@ The purpose of WPE is immediately evident to new users: it provides **adoption g
 - **Home** — mission, awareness content, hero visuals, war-day counter, FAQ preview
 - **Documents** — adoption/transport steps, costs, services, labs/clinics, volunteers
 - **Shelters** — shelters/private rescues list with contact links
-- **Blog** — dataset of posts; authorised users manage records (CRUD)
-- **Contact** — contact forms for different user scenarios
+- **Blog** — dataset of posts/news from local volynteers or shelters; authorised users manage records (CRUD)
+- **Contact** — contact forms for different user scenarios depend on whether you are an adopter or a volunteer
 
 ---
 
@@ -88,7 +90,7 @@ The main managed dataset is **Blog posts** (records created by authorised users 
 - `password_hash` (managed by Django)
 - `is_staff` / `is_superuser` (for admin/volunteer management)
 
-### Relationships (Requirement 2, 19)
+### Relationships 
 - One **User** can create many **Posts** (one-to-many).
 - Each **Post** belongs to exactly one **User** (author).
 
@@ -104,7 +106,7 @@ Authorised users (admin/volunteer) can:
 - **Update** a post (edit record)
 - **Delete** a post (remove record)
 
-**UI reflection (Requirement 46):**
+**UI reflection:**
 - After Create/Edit/Delete, the blog list/detail updates immediately (after redirect/refresh) to show the latest database state.
 
 ---
@@ -121,7 +123,7 @@ Authorised users (admin/volunteer) can:
   - alt text and decorative image handling
   - ARIA attributes for interactive elements (navigation/menu and any tab patterns used)
 
-**ARIA explanation (supports Requirements 16/36):**  
+**ARIA explanation:**  
 ARIA (Accessible Rich Internet Applications) attributes help screen readers understand interactive UI elements such as menus and tab-like controls.
 
 ---
@@ -141,15 +143,14 @@ ARIA (Accessible Rich Internet Applications) attributes help screen readers unde
 - Code includes compound statements (`if` conditions and loops) (example: validation, filtering, permissions checks).
 - Style: written to align with PEP8 standards.
 
-> Add a short note here if you ran a formatter/linter (e.g., `black`, `flake8`) or performed manual PEP8 review.
 
 ---
 
 ## File Naming & Project Hygiene 
 
 - Files are named descriptively, lowercase, and without spaces for cross-platform compatibility.
-- Production code should be free of commented-out code and broken internal links.
-- The application should run without errors across the site.
+- Production code is free of commented-out code and broken internal links.
+- The application run without errors across the site.
 
 ---
 
@@ -194,24 +195,22 @@ Live site: https://war-paws-europe-django.onrender.com
 #### 1. Push repository to GitHub.
 #### 2. Create a new Render Web Service connected to the repo.
 #### 3. Ensure these project files exist and are maintained:
-- requirements.txt (Requirement 44)
-- settings.py (Requirement 44)
-- Procfile if required by your deployment approach (Requirement 44)
-#### 4. Set environment variables in Render (Requirement 34):
+- requirements.txt 
+- settings.py 
+- Procfile if required by your deployment approach 
+#### 4. Set environment variables in Render:
 - SECRET_KEY
-- DEBUG=False (Requirement 35)
+- DEBUG=False 
 - Database variables (e.g., DATABASE_URL)
 #### 5. Build command (example):
 
-pip install -r requirements.txt
-python manage.py collectstatic --noinput
-python manage.py migrate
+pip install -r requirements.txt && python manage.py collectstatic --noinput && python manage.py migrate
 
-#### 6. Start command (example):
+#### 6. Start command:
 
-gunicorn project_name.wsgi:application
+gunicorn war_paws_europe.wsgi:application 
 
-#### 7. Test the deployed version matches the development version (Requirement 29):
+#### 7. Test the deployed version matches the development version:
 - Pages load
 - Static files load
 - Blog CRUD works for authorised users
@@ -219,9 +218,9 @@ gunicorn project_name.wsgi:application
 ### Database Configuration 
 Database configuration is kept in a single location (Django settings.py) and is easy to change per environment (local vs production). Production uses environment variables (e.g., DATABASE_URL) rather than hard-coded secrets.
 ### Security Features Considered 
-- No secrets committed to the repository (Requirement 10/33).
-- Secrets stored using environment variables and/or .env in .gitignore (Requirement 34).
-- DEBUG turned off in production (Requirement 35).
+- No secrets committed to the repository
+- Secrets stored using environment variables and/or .env in .gitignore
+- DEBUG turned off in production
 #### Django security defaults:
 - CSRF protection on forms
 - password hashing
@@ -229,25 +228,26 @@ Database configuration is kept in a single location (Django settings.py) and is 
 - authentication and authorisation for CRUD actions (login required)
 
 ### Version Control (Git & GitHub) 
-- Git & GitHub used throughout development up to deployment.
-- Commits should be small, clear, and feature-focused.
-- Commit messages document the development process and fixes.
+- Git & GitHub used throughout development up to deployment
+- Commits are small, clear, and feature-focused
+- Commit messages document the development process and fixes
 ##### Honest note: Sometimes I was rushing and my commit messages were not as detailed as they should be. I understand the importance of clear commits and will improve this going forward.
 
-### Credits & Attribution (Requirements 8, 18, 19)
+### Credits & Attribution 
 #### External references / tutorials / docs
 * MDN: DOMContentLoaded — https://developer.mozilla.org/en-US/docs/Web/API/Document/DOMContentLoaded_event
 * MDN: IntersectionObserver — https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API
 * W3C Validators — HTML/CSS validation tools
-Any external snippet used in code should be credited with a comment above it in the file, and larger dependencies should be listed here in the README (Requirement 8).
+External snippets used in code should be credited with a comment above it in the file, but unfortunatly due to time limitation they are listed in this file
 ### Images
 Some images were taken from social media accounts of Ukrainian shelters/rescuers. These images are used only for educational/student project purposes and should not be redistributed or reused commercially without permission from the original owners.
 
 ### Wireframes / Design Evidence
 I understand that wireframes and saved design planning are important for documentation and learning. Unfortunately, I lost my original wireframes/design files for this project. To document design decisions and responsiveness, I will include screenshots of the final implemented pages (desktop + mobile).
-* Recommended screenshot folder: images/screenshots/
+* For that reason I created a folder: images/screenshots/
 
-### Code Snippets (Examples for Tutor)
+### Code Snippets 
+
 #### Footer Year (JavaScript)
 
 const yearEl = document.getElementById("year");
@@ -264,9 +264,6 @@ if (warDayEl) {
   warDayEl.textContent = String(days);
 }
 
-### Known Limitations / Future Improvements
-- Add automated tests and document results more extensively (if not already implemented).
-- Expand dataset contributions (optional): allow trusted contributors to submit content via moderated forms.
 
 ### Author
 #### Hanna Greentree
