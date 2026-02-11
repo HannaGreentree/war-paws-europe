@@ -3,7 +3,7 @@
 War Paws Europe (WPE) is a volunteer-led full-stack platform that supports animals affected by the war in Ukraine by centralising adoption guidance, shelter/rescue contacts, and practical resources. The site also includes a **community-managed Blog dataset** where authorised volunteers/admins can publish updates that are immediately visible to the public.
 
 **Live site (Render):** https://war-paws-europe-django.onrender.com
-**Live site on Github (without Python):** 
+**Live site on Github (without Python):** https://hannagreentree.github.io/war-paws-europe/
 **Live site on Github (with Python):**
 
 ---
