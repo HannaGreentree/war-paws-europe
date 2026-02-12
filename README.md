@@ -70,8 +70,7 @@ I understand that creating wireframes and saving design references is an importa
 ![Home Section 2](images/screenshots/wireframes-home-2.png)
 ![Home Section 3](images/screenshots/wireframes-home-3.png)
 ![Home Section 4](images/screenshots/wireframes-home-4.png)
-![Home Section 5](images/screenshots/wireframes-home-5.png)
-![Home Section 6](images/screenshots/wireframes-home-6.png)
+
 
 ---
 
