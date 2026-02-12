@@ -76,7 +76,6 @@ I understand that creating wireframes and saving design references is an importa
 
 ### Shelters Page (Desktop)
 
-![Shelters Desktop](images/screenshots/shelters-desktop.png)
 ![Shelters Hero](images/screenshots/wireframes-shelters-hero.png)
 ![Shelters Section 2](images/screenshots/wireframes-shelters-2.png)
 
