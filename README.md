@@ -406,18 +406,18 @@ I understand that wireframes and saved design planning are important for documen
 
 #### Footer Year (JavaScript)
 
-const yearEl = document.getElementById("year");
-if (yearEl) yearEl.textContent = new Date().getFullYear();
+'''const yearEl = document.getElementById("year");
+if (yearEl) yearEl.textContent = new Date().getFullYear();'''
 
 ### War Day Counter (UTC-safe)
 
-const warDayEl = document.getElementById("warDayNumber");
+'''const warDayEl = document.getElementById("warDayNumber");
 if (warDayEl) {
   const warStartUTC = Date.UTC(2022, 1, 24);
   const now = new Date();
   const todayUTC = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), now.getUTCDate());
   const days = Math.floor((todayUTC - warStartUTC) / (24 * 60 * 60 * 1000));
-  warDayEl.textContent = String(days);
+  warDayEl.textContent = String(days);'''
 }
 
 ### Honest Development Reflection
