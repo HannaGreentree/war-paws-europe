@@ -58,7 +58,6 @@ Screenshot: (images/testing/blog-read.png)
 | Edit blog title   | Title updates immediately | Title updated correctly   | ✅ PASS |
 | Edit blog content | Content updated           | Content reflected on page | ✅ PASS |
 
-Screenshot: (images/testing/blog-update.png)
 
 ---
 
@@ -68,7 +67,6 @@ Screenshot: (images/testing/blog-update.png)
 | ---------------- | --------------------------------- | ---------------------- | ------- |
 | Delete blog post | Post removed from database and UI | Post no longer visible | ✅ PASS |
 
-Screenshot: (images/testing/blog-delete.png)
 
 ---
 
@@ -79,8 +77,6 @@ Screenshot: (images/testing/blog-delete.png)
 | Create new shelter   | Shelter saved and visible | Shelter appeared correctly    | ✅ PASS |
 | Edit shelter details | Information updated       | Changes reflected immediately | ✅ PASS |
 | Delete shelter       | Shelter removed           | Entry removed successfully    | ✅ PASS |
-
-Screenshot: (images/testing/shelter-crud.png)
 
 ---
 
@@ -93,8 +89,6 @@ Screenshot: (images/testing/shelter-crud.png)
 | Login with incorrect password | Access denied | Error message displayed | ✅ PASS |
 | SECRET_KEY stored in environment | Not visible in repository | Confirmed via GitHub | ✅ PASS |
 | DEBUG disabled in production | No debug error pages shown | Production secure | ✅ PASS |
-
-Screenshot: (images/testing/admin-login.png)
 
 ---
 
@@ -117,9 +111,6 @@ Screenshot: (images/testing/admin-login.png)
 | Static files served | CSS loads properly | Styles applied | ✅ PASS |
 | Media files served | Uploaded images visible | Images display correctly | ✅ PASS |
 
-Production URL tested:
-https://war-paws-europe-django.onrender.com/
-
 ---
 
 # Responsive Testing
@@ -131,9 +122,6 @@ Tested using Chrome Developer Tools and Safari.
 | Desktop (1920px) | Layout stable and readable  | ✅ PASS |
 | Tablet (768px)   | Navigation adjusts properly | ✅ PASS |
 | Mobile (375px)   | Content readable and usable | ✅ PASS |
-
-Screenshot:
-(images/testing/mobile-view.png)
 
 ---
 
