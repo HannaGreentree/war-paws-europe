@@ -428,7 +428,7 @@ I also understand the importance of creating and preserving wireframes before bu
 
 Regarding AI usage: I frequently used ChatGPT as a learning support tool — similar to having a personal tutor, adviser, or mentor. I asked questions, checked logic, debugged issues, and clarified concepts. However, I was always mindful that AI should be used strictly as a learning aid, not as a replacement for understanding. I made sure to review, adapt, and understand any suggested solutions before implementing them. My goal in this course is to learn and develop real coding ability — if I did not understand how things worked, I would not be gaining the skills I am here to build.
 
-This project reflects both my current skill level and my growth. I recognise areas for improvement (documentation precision, attribution clarity, wireframe preservation), and I am actively learning from these experiences to strengthen my professional development practices. I agree that my files and structure look messy but I can see it, and I know I will do better in my next project. 
+This project reflects both my current skill level and my growth. I recognise areas for improvement (documentation precision, attribution clarity, wireframe preservation), and I am actively learning from these experiences to strengthen my professional development practices. I agree that my files and structure look messy but I can see it, and I know I will do better in my next project. As for shelters.page, I decided not to manage it by volunteers or admin. The only option to add another card.     
 
 
 ### Author
