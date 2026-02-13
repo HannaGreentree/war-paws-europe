@@ -35,7 +35,7 @@ https://github.com/HannaGreentree/war-paws-europe-django
 | Upload image with blog post | Image saved in media folder and displayed | Image displayed correctly in blog detail | ✅ PASS |
 | Save post as Draft | Post does not appear publicly | Draft post hidden from public blog | ✅ PASS |
 
-Screenshot: (images/testing/blog-create.png)
+Screenshot: (images/testing-screenshots/blog-create.png)
 
 ---
 
@@ -47,7 +47,7 @@ Screenshot: (images/testing/blog-create.png)
 
 | Open individual blog post| Full post content shown | Full content rendered properly | ✅ PASS |
 
-Screenshot: (images/testing/blog-read.png)
+Screenshot: (images/testing-screenshots/blog-read.png)
 
 ---
 
